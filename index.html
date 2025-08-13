@@ -1,406 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VantoWare External | The Ultimate Roblox External Cheat</title>
-  <style>
-    /* Dark purple theme */
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VantoWare External | The Ultimate Roblox External Cheat</title>
+<style>
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #2a0055, #4b007f);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    min-height: 100vh;
+    padding: 60px;
+    box-sizing: border-box;
+  }
+  main {
+    flex: 1 1 auto;
+    max-width: 50vw;
+  }
+  header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 15px #6e4fff;
+  }
+  header p {
+    font-size: 1.3rem;
+    color: #c9baff;
+    max-width: 600px;
+    margin: 0 0 40px 0;
+    text-shadow: 0 0 10px #a080ff;
+  }
+  .btn-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .btn {
+    background: #4b007f;
+    padding: 18px 45px;
+    font-size: 1.25rem;
+    border-radius: 9999px;
+    box-shadow: 0 0 25px #6e4fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    user-select: none;
+    color: white;
+    border: none;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .btn:hover {
+    background: #6e4fff;
+    box-shadow: 0 0 40px #a080ff;
+  }
+  section {
+    margin-top: 80px;
+  }
+  section h2 {
+    font-size: 2.75rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #6e4fff;
+  }
+  section p {
+    color: #c9baff;
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto 25px 0;
+  }
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .feature-item {
+    background: #3a0066;
+    border-radius: 20px;
+    padding: 25px 20px;
+    box-shadow: 0 0 25px #4b007f88;
+    transition: box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .feature-item:hover {
+    box-shadow: 0 0 40px #6e4fffaa;
+  }
+  .feature-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #a080ff;
+    font-size: 1.5rem;
+  }
+  .feature-item p {
+    color: #d0c6ffcc;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .community-stats {
+    display: flex;
+    gap: 50px;
+    margin-top: 60px;
+    user-select: none;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat h3 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #a080ff;
+    text-shadow: 0 0 8px #6e4fff;
+  }
+  .stat p {
+    font-size: 1rem;
+    color: #c9baff;
+    margin: 6px 0 0 0;
+  }
+  .comparison-section {
+    margin-top: 80px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    background: #3a0066;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 25px #4b007f88;
+    user-select: none;
+  }
+  th, td {
+    padding: 15px 20px;
+    text-align: center;
+    color: #d0c6ffcc;
+    border-bottom: 1px solid #5a0088;
+    font-size: 1rem;
+  }
+  th {
+    background: #4b007f;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #a080ff;
+    text-shadow: 0 0 8px #6e4fff;
+  }
+  td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: #c9baff;
+  }
+  td:nth-child(2), td:nth-child(3) {
+    font-size: 1.2rem;
+  }
+
+  /* Image styling */
+  .logo-img {
+    max-width: 45vw;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 40px;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      border 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+    border: 3px solid transparent;
+    box-shadow: 0 0 6px 2px rgba(160, 128, 255, 0.25);
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    transform: perspective(700px) rotateY(-20deg) rotateX(5deg);
+    float: right;
+    margin-left: 40px;
+  }
+  .logo-img:hover {
+    border: 3px solid #a080ff;
+    box-shadow:
+      0 0 15px 5px rgba(160, 128, 255, 0.7);
+    transform: perspective(700px) rotateY(-15deg) rotateX(3deg) scale(1.05);
+  }
+  /* Responsive */
+  @media (max-width: 900px) {
     body {
-      margin: 0;
-      background: linear-gradient(135deg, #2a0055, #4b007f);
-      color: white;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    a {
-      color: #a080ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Left content column */
-    main {
-      flex: 1 1 0;
-      max-width: 50vw;
-      padding: 60px 60px 40px 60px;
-      display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      position: relative;
-      z-index: 20;
-      box-sizing: border-box;
+      padding: 20px;
     }
-
-    header h1 {
-      font-size: 3.5rem;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 15px #6e4fff;
+    main {
+      max-width: 100vw;
     }
-
-    header p {
-      font-size: 1.3rem;
-      color: #c9baff;
-      max-width: 600px;
-      margin: 0 0 40px 0;
-      text-shadow: 0 0 10px #a080ff;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-
-    .btn {
-      background: #4b007f;
-      padding: 18px 45px;
-      font-size: 1.25rem;
-      border-radius: 9999px;
-      box-shadow: 0 0 25px #6e4fff;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      user-select: none;
-      color: white;
-      border: none;
-      text-align: center;
-      display: inline-block;
-      white-space: nowrap;
-    }
-    .btn:hover {
-      background: #6e4fff;
-      box-shadow: 0 0 40px #a080ff;
-    }
-
-    section {
-      margin-top: 80px;
-      position: relative;
-      z-index: 20;
-    }
-
-    section h2 {
-      font-size: 2.75rem;
-      margin-bottom: 15px;
-      text-shadow: 0 0 15px #6e4fff;
-    }
-
-    section p {
-      color: #c9baff;
-      font-size: 1.15rem;
-      max-width: 600px;
-      margin: 0 auto 25px 0;
-    }
-
-    .features-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .feature-item {
-      background: #3a0066;
-      border-radius: 20px;
-      padding: 25px 20px;
-      box-shadow: 0 0 25px #4b007f88;
-      transition: box-shadow 0.3s ease;
-      user-select: none;
-    }
-    .feature-item:hover {
-      box-shadow: 0 0 40px #6e4fffaa;
-    }
-    .feature-item h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: #a080ff;
-      font-size: 1.5rem;
-    }
-    .feature-item p {
-      color: #d0c6ffcc;
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-
-    .community-stats {
-      display: flex;
-      gap: 50px;
-      margin-top: 60px;
-      user-select: none;
-    }
-
-    .stat {
-      text-align: center;
-    }
-    .stat h3 {
-      font-size: 2.5rem;
-      margin: 0;
-      color: #a080ff;
-      text-shadow: 0 0 8px #6e4fff;
-    }
-    .stat p {
-      font-size: 1rem;
-      color: #c9baff;
-      margin: 6px 0 0 0;
-    }
-
-    .comparison-section {
-      margin-top: 80px;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      background: #3a0066;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 0 25px #4b007f88;
-      user-select: none;
-    }
-    th, td {
-      padding: 15px 20px;
-      text-align: center;
-      color: #d0c6ffcc;
-      border-bottom: 1px solid #5a0088;
-      font-size: 1rem;
-    }
-    th {
-      background: #4b007f;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #a080ff;
-      text-shadow: 0 0 8px #6e4fff;
-    }
-    td:first-child {
-      text-align: left;
-      font-weight: 600;
-      color: #c9baff;
-    }
-    td:nth-child(2), td:nth-child(3) {
-      font-size: 1.2rem;
-    }
-
-    /* Right big image */
     .logo-img {
-  position: fixed;
-  bottom: 50%;
-  right: 10%;
-  height: 65vh;
-  width: auto;
-  max-width: 40vw;
-  object-fit: contain;
-  border-radius: 40px;
-  cursor: pointer;
-  user-select: none;
-  transition:
-    border 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
-  border: 4px solid transparent;
-  box-shadow: 0 0 6px 2px rgba(160, 128, 255, 0.4);
-  transform-origin: center center;
-  transform-style: preserve-3d;
-  transform: perspective(800px) rotateY(-25deg) rotateX(5deg) translateY(50%);
-  z-index: 10;
-
-  background: rgba(255, 255, 255, 0.1); /* light overlay */
-  border: 2px solid yellow; /* visible border for debugging */
-}
-    .logo-img:hover {
-      border: 4px solid #a080ff;
-      box-shadow:
-        0 0 10px 4px rgba(160, 128, 255, 0.6);
-      transform: perspective(800px) rotateY(-15deg) rotateX(3deg) translateY(50%) scale(1.05);
-      z-index: 15;
+      float: none;
+      max-width: 90vw;
+      max-height: 300px;
+      margin: 30px auto 60px;
+      display: block;
+      transform: none !important;
+      box-shadow: 0 0 20px #6e4fff44;
     }
-
-    footer {
-      background: #2a0055;
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #7e6bffcc;
-      user-select: none;
-      position: relative;
-      z-index: 20;
-      flex-basis: 100%;
-    }
-
-    footer nav {
-      margin-bottom: 15px;
-    }
-
-    footer nav a {
-      margin: 0 12px;
-      color: #7e6bffcc;
-      transition: color 0.3s ease;
-    }
-
-    footer nav a:hover {
-      color: #a080ff;
-      text-decoration: underline;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 900px) {
-      body {
-        flex-direction: column;
-        padding: 0 20px;
-      }
-      main {
-        max-width: 100%;
-        padding: 40px 20px;
-      }
-      .logo-img {
-        position: relative;
-        max-width: 100%;
-        height: auto;
-        margin: 30px auto 60px;
-        transform: none !important;
-        box-shadow: 0 0 20px #6e4fff44;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>VantoWare External</h1>
-      <p>VantoWare is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar.</p>
-      <div class="btn-group">
-        <a href="/downloads/VantoWareExternal.exe" download class="btn">Download Now</a>
-        <a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener noreferrer" class="btn">Join Discord</a>
+
+<main>
+  <header>
+    <h1>VantoWare External</h1>
+    <p>VantoWare is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar.</p>
+    <div class="btn-group">
+      <a href="/downloads/VantoWareExternal.exe" download class="btn">Download Now</a>
+      <a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener noreferrer" class="btn">Join Discord</a>
+    </div>
+  </header>
+
+  <section id="interface">
+    <h2>VantoWare Interface</h2>
+    <p>Designed for ease of use, VantoWare offers an intuitive, lightweight interface that lets you access powerful cheats without hassle.</p>
+  </section>
+
+  <section id="why-choose-us">
+    <h2>Why Choose Us</h2>
+    <div class="features-list">
+      <div class="feature-item">
+        <h3>Unmatched Features</h3>
+        <p>VantoWare provides a comprehensive suite of cheats and tools designed to enhance your Roblox experience like never before.</p>
       </div>
-    </header>
-
-    <section id="interface">
-      <h2>VantoWare Interface</h2>
-      <p>Designed for ease of use, VantoWare offers an intuitive, lightweight interface that lets you access powerful cheats without hassle.</p>
-    </section>
-
-    <section id="why-choose-us">
-      <h2>Why Choose Us</h2>
-      <div class="features-list">
-        <div class="feature-item">
-          <h3>Unmatched Features</h3>
-          <p>VantoWare provides a comprehensive suite of cheats and tools designed to enhance your Roblox experience like never before.</p>
-        </div>
-        <div class="feature-item">
-          <h3>Maximum Performance</h3>
-          <p>Optimized for speed and stability, VantoWare runs smoothly without lag or crashes, letting you game uninterrupted.</p>
-        </div>
-        <div class="feature-item">
-          <h3>Advanced Security</h3>
-          <p>Our proprietary anti-detection system keeps you safe from bans while delivering consistent performance.</p>
-        </div>
-        <div class="feature-item">
-          <h3>Free & Keyless</h3>
-          <p>We focus on community and quality — no keys or paywalls, just a free, reliable external cheat for everyone.</p>
-        </div>
-        <div class="feature-item">
-          <h3>99% Undetected</h3>
-          <p>Our custom-built modules ensure a 99% undetected rate across all supported Roblox scripts.</p>
-        </div>
-        <div class="feature-item">
-          <h3>24/7 Support</h3>
-          <p>Our dedicated support team is always ready to help with any questions or issues.</p>
-        </div>
+      <div class="feature-item">
+        <h3>Maximum Performance</h3>
+        <p>Optimized for speed and stability, VantoWare runs smoothly without lag or crashes, letting you game uninterrupted.</p>
       </div>
-    </section>
-
-    <section id="community">
-      <h2>Our Community</h2>
-      <p>Trusted by a growing number of users worldwide who rely on VantoWare for their Roblox external cheat needs.</p>
-      <div class="community-stats">
-        <div class="stat">
-          <h3>125+</h3>
-          <p>Discord Members</p>
-        </div>
-        <div class="stat">
-          <h3>v0.1.1</h3>
-          <p>Current Version</p>
-        </div>
-        <div class="stat">
-          <h3>99%</h3>
-          <p>Undetected Rate</p>
-        </div>
+      <div class="feature-item">
+        <h3>Advanced Security</h3>
+        <p>Our proprietary anti-detection system keeps you safe from bans while delivering consistent performance.</p>
       </div>
-    </section>
+      <div class="feature-item">
+        <h3>Free & Keyless</h3>
+        <p>We focus on community and quality — no keys or paywalls, just a free, reliable external cheat for everyone.</p>
+      </div>
+      <div class="feature-item">
+        <h3>99% Undetected</h3>
+        <p>Our custom-built modules ensure a 99% undetected rate across all supported Roblox scripts.</p>
+      </div>
+      <div class="feature-item">
+        <h3>24/7 Support</h3>
+        <p>Our dedicated support team is always ready to help with any questions or issues.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="features-comparison" class="comparison-section">
-      <h2>Features Comparison</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Live</th>
-            <th>Soon</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>External Injection</td>
-            <td>✔️</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Script Support</td>
-            <td>✔️</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Undetected Modules</td>
-            <td>✔️</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Instant Injection</td>
-            <td>✔️</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Settings UI</td>
-            <td>✔️</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Advanced TP Handler</td>
-            <td></td>
-            <td>✔️</td>
-          </tr>
-          <tr>
-            <td>Crash Prevention</td>
-            <td></td>
-            <td>✔️</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+  <section id="community">
+    <h2>Our Community</h2>
+    <p>Trusted by a growing number of users worldwide who rely on VantoWare for their Roblox external cheat needs.</p>
+    <div class="community-stats">
+      <div class="stat">
+        <h3>125+</h3>
+        <p>Discord Members</p>
+      </div>
+      <div class="stat">
+        <h3>v0.1.1</h3>
+        <p>Current Version</p>
+      </div>
+      <div class="stat">
+        <h3>99%</h3>
+        <p>Undetected Rate</p>
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <section id="features-comparison" class="comparison-section">
+    <h2>Features Comparison</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Live</th>
+          <th>Soon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>External Injection</td>
+          <td>✔️</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Script Support</td>
+          <td>✔️</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Undetected Modules</td>
+          <td>✔️</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Instant Injection</td>
+          <td>✔️</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Settings UI</td>
+          <td>✔️</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Advanced TP Handler</td>
+          <td></td>
+          <td>✔️</td>
+        </tr>
+        <tr>
+          <td>Crash Prevention</td>
+          <td></td>
+          <td>✔️</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  
+  <!-- Image here so it floats right -->
+  <img src="images/vantoware_logo.png" alt="VantoWare Logo" class="logo-img" />
+</main>
 
-  <img
-    src="images/vantoware_logo.png"
-    alt="VantoWare Logo"
-    class="logo-img"
-  />
-
-  <footer>
-    <nav>
-      <a href="#interface">Interface</a>
-      <a href="#why-choose-us">Features</a>
-      <a href="#community">Community</a>
-      <a href="#features-comparison">Comparison</a>
-      <a href="#download">Download</a>
-      <a href="#support">Support</a>
-      <a href="#legal">Legal</a>
-    </nav>
-    <p>© 2025 VantoWare. All rights reserved.</p>
-  </footer>
 </body>
 </html>
