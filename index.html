@@ -13,9 +13,8 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
-      position: relative;
-      padding-left: 40px;
-      padding-right: 40px;
+      display: flex;
+      min-height: 100vh;
     }
 
     a {
@@ -26,12 +25,17 @@
       text-decoration: underline;
     }
 
-    header {
-      padding: 60px 20px 40px;
-      max-width: 900px;
-      margin: 0 auto;
+    /* Left content column */
+    main {
+      flex: 1 1 0;
+      max-width: 50vw;
+      padding: 60px 60px 40px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       position: relative;
       z-index: 20;
+      box-sizing: border-box;
     }
 
     header h1 {
@@ -43,16 +47,16 @@
     header p {
       font-size: 1.3rem;
       color: #c9baff;
-      max-width: 700px;
-      margin: 0 auto 40px;
+      max-width: 600px;
+      margin: 0 0 40px 0;
       text-shadow: 0 0 10px #a080ff;
     }
 
     .btn-group {
       display: flex;
-      justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
+      margin-bottom: 40px;
     }
 
     .btn {
@@ -68,6 +72,7 @@
       border: none;
       text-align: center;
       display: inline-block;
+      white-space: nowrap;
     }
     .btn:hover {
       background: #6e4fff;
@@ -75,9 +80,7 @@
     }
 
     section {
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 0 20px;
+      margin-top: 80px;
       position: relative;
       z-index: 20;
     }
@@ -85,19 +88,16 @@
     section h2 {
       font-size: 2.75rem;
       margin-bottom: 15px;
-      text-align: center;
       text-shadow: 0 0 15px #6e4fff;
     }
 
     section p {
       color: #c9baff;
       font-size: 1.15rem;
-      max-width: 700px;
-      margin: 0 auto 25px;
-      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 25px 0;
     }
 
-    /* Features grid */
     .features-list {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
@@ -128,10 +128,8 @@
       line-height: 1.4;
     }
 
-    /* Community stats */
     .community-stats {
       display: flex;
-      justify-content: center;
       gap: 50px;
       margin-top: 60px;
       user-select: none;
@@ -152,16 +150,12 @@
       margin: 6px 0 0 0;
     }
 
-    /* Features comparison */
     .comparison-section {
       margin-top: 80px;
-      padding: 0 20px;
     }
     table {
       border-collapse: collapse;
       width: 100%;
-      max-width: 900px;
-      margin: 0 auto 60px;
       background: #3a0066;
       border-radius: 15px;
       overflow: hidden;
@@ -191,14 +185,14 @@
       font-size: 1.2rem;
     }
 
-    /* Image styling with subtle glow + purple outline on hover */
+    /* Right big image */
     .logo-img {
       position: fixed;
       bottom: 50%;
       right: 10%;
       height: 65vh;
       width: auto;
-      max-width: 90vw;
+      max-width: 40vw;
       object-fit: contain;
       border-radius: 40px;
       cursor: pointer;
@@ -222,7 +216,6 @@
       z-index: 15;
     }
 
-    /* Footer nav */
     footer {
       background: #2a0055;
       padding: 30px 20px;
@@ -232,6 +225,7 @@
       user-select: none;
       position: relative;
       z-index: 20;
+      flex-basis: 100%;
     }
 
     footer nav {
@@ -248,121 +242,144 @@
       color: #a080ff;
       text-decoration: underline;
     }
+
+    /* Responsive tweaks */
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+        padding: 0 20px;
+      }
+      main {
+        max-width: 100%;
+        padding: 40px 20px;
+      }
+      .logo-img {
+        position: relative;
+        max-width: 100%;
+        height: auto;
+        margin: 30px auto 60px;
+        transform: none !important;
+        box-shadow: 0 0 20px #6e4fff44;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>VantoWare External</h1>
-    <p>VantoWare is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar.</p>
-    <div class="btn-group">
-      <a href="/downloads/VantoWareExternal.exe" download class="btn">Download Now</a>
-      <a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener noreferrer" class="btn">Join Discord</a>
-    </div>
-  </header>
+  <main>
+    <header>
+      <h1>VantoWare External</h1>
+      <p>VantoWare is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar.</p>
+      <div class="btn-group">
+        <a href="/downloads/VantoWareExternal.exe" download class="btn">Download Now</a>
+        <a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener noreferrer" class="btn">Join Discord</a>
+      </div>
+    </header>
 
-  <section id="interface">
-    <h2>VantoWare Interface</h2>
-    <p>Designed for ease of use, VantoWare offers an intuitive, lightweight interface that lets you access powerful cheats without hassle.</p>
-  </section>
+    <section id="interface">
+      <h2>VantoWare Interface</h2>
+      <p>Designed for ease of use, VantoWare offers an intuitive, lightweight interface that lets you access powerful cheats without hassle.</p>
+    </section>
 
-  <section id="why-choose-us">
-    <h2>Why Choose Us</h2>
-    <div class="features-list">
-      <div class="feature-item">
-        <h3>Unmatched Features</h3>
-        <p>VantoWare provides a comprehensive suite of cheats and tools designed to enhance your Roblox experience like never before.</p>
+    <section id="why-choose-us">
+      <h2>Why Choose Us</h2>
+      <div class="features-list">
+        <div class="feature-item">
+          <h3>Unmatched Features</h3>
+          <p>VantoWare provides a comprehensive suite of cheats and tools designed to enhance your Roblox experience like never before.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Maximum Performance</h3>
+          <p>Optimized for speed and stability, VantoWare runs smoothly without lag or crashes, letting you game uninterrupted.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Advanced Security</h3>
+          <p>Our proprietary anti-detection system keeps you safe from bans while delivering consistent performance.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Free & Keyless</h3>
+          <p>We focus on community and quality — no keys or paywalls, just a free, reliable external cheat for everyone.</p>
+        </div>
+        <div class="feature-item">
+          <h3>99% Undetected</h3>
+          <p>Our custom-built modules ensure a 99% undetected rate across all supported Roblox scripts.</p>
+        </div>
+        <div class="feature-item">
+          <h3>24/7 Support</h3>
+          <p>Our dedicated support team is always ready to help with any questions or issues.</p>
+        </div>
       </div>
-      <div class="feature-item">
-        <h3>Maximum Performance</h3>
-        <p>Optimized for speed and stability, VantoWare runs smoothly without lag or crashes, letting you game uninterrupted.</p>
-      </div>
-      <div class="feature-item">
-        <h3>Advanced Security</h3>
-        <p>Our proprietary anti-detection system keeps you safe from bans while delivering consistent performance.</p>
-      </div>
-      <div class="feature-item">
-        <h3>Free & Keyless</h3>
-        <p>We focus on community and quality — no keys or paywalls, just a free, reliable external cheat for everyone.</p>
-      </div>
-      <div class="feature-item">
-        <h3>99% Undetected</h3>
-        <p>Our custom-built modules ensure a 99% undetected rate across all supported Roblox scripts.</p>
-      </div>
-      <div class="feature-item">
-        <h3>24/7 Support</h3>
-        <p>Our dedicated support team is always ready to help with any questions or issues.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="community">
-    <h2>Our Community</h2>
-    <p>Trusted by a growing number of users worldwide who rely on VantoWare for their Roblox external cheat needs.</p>
-    <div class="community-stats">
-      <div class="stat">
-        <h3>125+</h3>
-        <p>Discord Members</p>
+    <section id="community">
+      <h2>Our Community</h2>
+      <p>Trusted by a growing number of users worldwide who rely on VantoWare for their Roblox external cheat needs.</p>
+      <div class="community-stats">
+        <div class="stat">
+          <h3>125+</h3>
+          <p>Discord Members</p>
+        </div>
+        <div class="stat">
+          <h3>v0.1.1</h3>
+          <p>Current Version</p>
+        </div>
+        <div class="stat">
+          <h3>99%</h3>
+          <p>Undetected Rate</p>
+        </div>
       </div>
-      <div class="stat">
-        <h3>v0.1.1</h3>
-        <p>Current Version</p>
-      </div>
-      <div class="stat">
-        <h3>99%</h3>
-        <p>Undetected Rate</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="features-comparison" class="comparison-section">
-    <h2>Features Comparison</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Live</th>
-          <th>Soon</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>External Injection</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Script Support</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Undetected Modules</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Instant Injection</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Settings UI</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Advanced TP Handler</td>
-          <td></td>
-          <td>✔️</td>
-        </tr>
-        <tr>
-          <td>Crash Prevention</td>
-          <td></td>
-          <td>✔️</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <section id="features-comparison" class="comparison-section">
+      <h2>Features Comparison</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Live</th>
+            <th>Soon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>External Injection</td>
+            <td>✔️</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Script Support</td>
+            <td>✔️</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Undetected Modules</td>
+            <td>✔️</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Instant Injection</td>
+            <td>✔️</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Settings UI</td>
+            <td>✔️</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Advanced TP Handler</td>
+            <td></td>
+            <td>✔️</td>
+          </tr>
+          <tr>
+            <td>Crash Prevention</td>
+            <td></td>
+            <td>✔️</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
 
   <img
     src="images/vantoware_logo.png"
