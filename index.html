@@ -48,6 +48,7 @@
     border-radius: 9999px;
     box-shadow: 0 0 25px #6e4fff;
     cursor: pointer;
+    transition: background 0.3s ease;
     user-select: none;
     color: white;
     border: none;
@@ -85,6 +86,7 @@
     border-radius: 20px;
     padding: 25px 20px;
     box-shadow: 0 0 25px #4b007f88;
+    transition: box-shadow 0.3s ease;
     user-select: none;
   }
   .feature-item:hover {
@@ -224,9 +226,9 @@
     }
   }
 
-  /* Modal styling */
+  /* Popup Modal */
   #paymentModal {
-    display: flex;
+    display: none; /* hide by default */
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
@@ -245,6 +247,7 @@
     color: #fff;
     box-shadow: 0 0 25px #6e4fff;
     text-align: center;
+    position: relative;
   }
   #modalContent p {
     font-size: 1.2rem;
@@ -254,21 +257,19 @@
     color: #a080ff;
     text-decoration: underline;
   }
-  #modalContent button {
-    margin-top: 20px;
-    width: 100%;
-    background: #6e4fff;
-    padding: 12px;
+  #closeModalBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
     border: none;
-    border-radius: 9999px;
-    font-size: 1.1rem;
+    color: #ccc;
+    font-size: 1.5rem;
     cursor: pointer;
-    color: #fff;
-    box-shadow: 0 0 15px #a080ff;
     user-select: none;
   }
-  #modalContent button:hover {
-    background: #a080ff;
+  #closeModalBtn:hover {
+    color: white;
   }
 </style>
 </head>
@@ -279,7 +280,8 @@
     <h1>VantoWare External</h1>
     <p>VantoWare is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar.</p>
     <div class="btn-group">
-      <a href="/downloads/VantoWareExternal.exe" download class="btn" id="downloadBtn">Download Now</a>
+      <!-- Changed from <a> to <button> to control popup -->
+      <button id="downloadBtn" class="btn">Download Now</button>
       <a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener noreferrer" class="btn">Join Discord</a>
     </div>
   </header>
@@ -392,15 +394,25 @@
   <img src="images/vantoware_logo.png" alt="VantoWare Logo" class="logo-img" />
 </main>
 
-<!-- Popup Modal always visible -->
+<!-- Popup Modal -->
 <div id="paymentModal">
   <div id="modalContent">
+    <button id="closeModalBtn" aria-label="Close popup">&times;</button>
     <h2>Payment Info</h2>
-    <p>Cash App User: <strong>$YourCashAppUser</strong></p>
-    <p>Amount Needed: <strong>$20.00</strong></p>
 
-    <p style="margin-bottom: 20px;">
-      DM <strong>xdplayzyt7889#0000</strong> on Discord to confirm your payment.
+    <p>💵 <strong>Pricing</strong></p>
+
+    <p>⭐ $1 day<br>
+    [ 1 Day Access to VantoWare ]</p>
+
+    <p>⭐ $3 a week<br>
+    [ 1 Week Access to VantoWare ]</p>
+
+    <p>⭐ $6 lifetime<br>
+    [ LifeTime Access to VantoWare ]</p>
+
+    <p style="margin-top: 25px;">
+      Make a ticket in the server as <strong>$enzoontop11</strong>
     </p>
 
     <p style="font-size: 0.8rem; color: #aaa; margin-top: 10px;">
@@ -409,10 +421,28 @@
         Terms of Service
       </a>.
     </p>
-
-    <a href="/downloads/VantoWareExternal.exe" download class="btn">Download Now</a>
   </div>
 </div>
+
+<script>
+  const downloadBtn = document.getElementById('downloadBtn');
+  const paymentModal = document.getElementById('paymentModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+
+  downloadBtn.addEventListener('click', () => {
+    paymentModal.style.display = 'flex';
+  });
+
+  closeModalBtn.addEventListener('click', () => {
+    paymentModal.style.display = 'none';
+  });
+
+  paymentModal.addEventListener('click', (e) => {
+    if (e.target === paymentModal) {
+      paymentModal.style.display = 'none';
+    }
+  });
+</script>
 
 </body>
 </html>
