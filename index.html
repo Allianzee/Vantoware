@@ -351,13 +351,11 @@
 <div id="paymentModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);z-index:10000;justify-content:center;align-items:center;">
   <div style="background:#2a0055;padding:30px;border-radius:15px;max-width:400px;width:90%;color:#fff;box-shadow:0 0 25px #6e4fff;">
     <h2 style="margin-top:0;text-align:center;">Payment Info</h2>
-    <label style="display:block;margin-bottom:8px;">Cash App User:</label>
-    <input id="cashAppUser" type="text" placeholder="$username" style="width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:15px;font-size:1rem;" />
 
-    <label style="display:block;margin-bottom:8px;">Amount Needed (USD):</label>
-    <input id="amountNeeded" type="number" min="0" step="0.01" placeholder="e.g. 20.00" style="width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:15px;font-size:1rem;" />
+    <p style="font-size:1.2rem; margin-bottom:8px;">Cash App User: <strong id="cashAppUserLabel">$YourCashAppUser</strong></p>
+    <p style="font-size:1.2rem; margin-bottom:20px;">Amount Needed: <strong id="amountNeededLabel">$20.00</strong></p>
 
-    <label style="display:block;margin-bottom:8px;">Discord Username:</label>
+    <label style="display:block;margin-bottom:8px;">Your Discord Username:</label>
     <input id="discordUser" type="text" placeholder="Discord#1234" style="width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:20px;font-size:1rem;" />
 
     <button id="sendPaymentBtn" style="width:100%;background:#6e4fff;padding:12px;border:none;border-radius:9999px;font-size:1.1rem;cursor:pointer;color:#fff;box-shadow:0 0 15px #a080ff;">Send</button>
@@ -374,6 +372,9 @@
   const sendBtn = document.getElementById('sendPaymentBtn');
   const modalMsg = document.getElementById('modalMsg');
 
+  const cashAppUserLabel = document.getElementById('cashAppUserLabel');
+  const amountNeededLabel = document.getElementById('amountNeededLabel');
+
   downloadBtn.addEventListener('click', function(e) {
     e.preventDefault(); // stop actual download for now
     modal.style.display = 'flex';
@@ -382,21 +383,22 @@
   closeModalBtn.addEventListener('click', () => {
     modal.style.display = 'none';
     modalMsg.textContent = '';
+    sendBtn.disabled = false;
+    sendBtn.textContent = 'Send';
   });
 
   sendBtn.addEventListener('click', async () => {
     modalMsg.textContent = '';
-    const cashAppUser = document.getElementById('cashAppUser').value.trim();
-    const amountNeeded = document.getElementById('amountNeeded').value.trim();
+    const cashAppUser = cashAppUserLabel.textContent.trim();
+    const amountNeeded = amountNeededLabel.textContent.trim();
     const discordUser = document.getElementById('discordUser').value.trim();
 
-    if (!cashAppUser || !amountNeeded || !discordUser) {
+    if (!discordUser) {
       modalMsg.style.color = 'red';
-      modalMsg.textContent = 'Please fill in all fields.';
+      modalMsg.textContent = 'Please enter your Discord username.';
       return;
     }
 
-    // Disable button while sending
     sendBtn.disabled = true;
     sendBtn.textContent = 'Sending...';
 
@@ -409,13 +411,13 @@
 
       if (res.ok) {
         modalMsg.style.color = 'lightgreen';
-        modalMsg.textContent = 'Email sent! Check your inbox.';
-        // Optionally trigger actual download here after sending:
+        modalMsg.textContent = 'Email sent! Starting download...';
         setTimeout(() => {
           modal.style.display = 'none';
           sendBtn.disabled = false;
           sendBtn.textContent = 'Send';
-          downloadBtn.click(); // start the actual download after sending
+          downloadBtn.removeEventListener('click', preventDefaultListener);
+          downloadBtn.click(); // trigger actual download now
         }, 1500);
       } else {
         throw new Error('Failed to send email');
@@ -427,6 +429,11 @@
       sendBtn.textContent = 'Send';
     }
   });
+
+  function preventDefaultListener(e) {
+    e.preventDefault();
+  }
+  downloadBtn.addEventListener('click', preventDefaultListener);
 </script>
 </body>
 </html>
