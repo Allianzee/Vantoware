@@ -18,6 +18,7 @@
       height: 100vh;
       text-align: center;
       padding: 20px;
+      gap: 40px;
     }
 
     h1 {
@@ -32,6 +33,13 @@
       text-shadow: 0 0 6px #b399ff;
     }
 
+    /* Container for buttons + image aligned horizontally */
+    .action-row {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
     .btn {
       background: #7f56ff;
       border: none;
@@ -40,17 +48,44 @@
       font-size: 1.25rem;
       border-radius: 9999px;
       cursor: pointer;
-      margin: 10px;
       box-shadow: 0 0 15px #a366ff;
       transition: background 0.3s ease;
       text-decoration: none;
-      display: inline-block;
       user-select: none;
+      display: inline-block;
     }
 
     .btn:hover {
       background: #b399ff;
       box-shadow: 0 0 20px #d3b3ff;
+    }
+
+    /* Image styling */
+    .logo-img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 20px;
+      transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        filter 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Hover effect: purple outline, glow, perspective tilt */
+    .logo-img:hover {
+      box-shadow:
+        0 0 12px 4px #b399ff,
+        0 0 30px 10px #d3b3ff;
+      filter: drop-shadow(0 0 6px #b399ff);
+      transform:
+        perspective(600px)
+        rotateY(15deg)
+        rotateX(5deg)
+        scale(1.05);
+      z-index: 10;
     }
 
     footer {
@@ -65,13 +100,22 @@
   <h1>VantoWare</h1>
   <p>Your go-to external utility for Roblox</p>
 
-  <a href="https://discord.gg/yourdiscordinvite" target="_blank" class="btn" rel="noopener noreferrer">
-    Join Discord
-  </a>
+  <div class="action-row">
+    <a href="/downloads/VantoWareExternal.exe" download class="btn" style="order: 1;">
+      Download
+    </a>
 
-  <a href="/downloads/VantoWareExternal.exe" download class="btn">
-    Get VantoWare External
-  </a>
+    <img
+      src="images/vantoware_logo.png"
+      alt="VantoWare Logo"
+      class="logo-img"
+      style="order: 2;"
+    />
+
+    <a href="https://discord.gg/yourdiscordinvite" target="_blank" class="btn" rel="noopener noreferrer" style="order: 3;">
+      Join Discord
+    </a>
+  </div>
 
   <footer>© 2025 VantoWare. All rights reserved.</footer>
 </body>
