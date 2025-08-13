@@ -158,30 +158,33 @@
 
   /* Image styling */
   .logo-img {
-    max-width: 45vw;
-    max-height: 75vh;
-    object-fit: contain;
-    border-radius: 40px;
-    cursor: pointer;
-    user-select: none;
-    transition:
-      border 0.3s ease,
-      box-shadow 0.3s ease,
-      transform 0.3s ease;
-    border: 3px solid transparent;
-    box-shadow: 0 0 6px 2px rgba(160, 128, 255, 0.25);
-    transform-origin: center center;
-    transform-style: preserve-3d;
-    transform: perspective(700px) rotateY(-20deg) rotateX(5deg);
-    float: right;
-    margin-left: 40px;
-  }
-  .logo-img:hover {
-    border: 3px solid #a080ff;
-    box-shadow:
-      0 0 15px 5px rgba(160, 128, 255, 0.7);
-    transform: perspective(700px) rotateY(-15deg) rotateX(3deg) scale(1.05);
-  }
+  position: fixed;       /* fixes it on the viewport */
+  top: 80px;             /* down from top so not flush */
+  right: 40px;           /* a bit from right edge */
+  max-width: 40vw;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 40px;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    border 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+  border: 3px solid transparent;
+  box-shadow: 0 0 6px 2px rgba(160, 128, 255, 0.25);
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  transform: perspective(700px) rotateY(-20deg) rotateX(5deg);
+  z-index: 9999;        /* on top */
+}
+
+.logo-img:hover {
+  border: 3px solid #a080ff;
+  box-shadow:
+    0 0 15px 5px rgba(160, 128, 255, 0.7);
+  transform: perspective(700px) rotateY(-15deg) rotateX(3deg) scale(1.05);
+}
   /* Responsive */
   @media (max-width: 900px) {
     body {
