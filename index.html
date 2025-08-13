@@ -16,10 +16,12 @@
     min-height: 100vh;
     padding: 60px;
     box-sizing: border-box;
+    animation: fadeIn 1s ease forwards;
   }
   main {
     flex: 1 1 auto;
     max-width: 50vw;
+    padding-right: 50vw; /* space so fixed image doesn't cover text */
   }
   header h1 {
     font-size: 3.5rem;
@@ -156,35 +158,49 @@
     font-size: 1.2rem;
   }
 
+  /* Animations */
+  @keyframes floatIdle {
+    0%, 100% {
+      transform: perspective(700px) rotateY(-20deg) rotateX(5deg) translateY(0);
+    }
+    50% {
+      transform: perspective(700px) rotateY(-20deg) rotateX(5deg) translateY(-15px);
+    }
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
   /* Image styling */
   .logo-img {
-  position: fixed;       /* fixes it on the viewport */
-  top: 80px;             /* down from top so not flush */
-  right: 40px;           /* a bit from right edge */
-  max-width: 40vw;
-  max-height: 70vh;
-  object-fit: contain;
-  border-radius: 40px;
-  cursor: pointer;
-  user-select: none;
-  transition:
-    border 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
-  border: 3px solid transparent;
-  box-shadow: 0 0 6px 2px rgba(160, 128, 255, 0.25);
-  transform-origin: center center;
-  transform-style: preserve-3d;
-  transform: perspective(700px) rotateY(-20deg) rotateX(5deg);
-  z-index: 9999;        /* on top */
-}
+    position: fixed;
+    top: 80px;
+    right: 40px;
+    max-width: 40vw;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 40px;
+    cursor: pointer;
+    user-select: none;
+    border: 3px solid transparent;
+    box-shadow: 0 0 6px 2px rgba(160, 128, 255, 0.25);
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    animation: floatIdle 4s ease-in-out infinite;
+    z-index: 9999;
+    transition:
+      border 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+  }
+  .logo-img:hover {
+    border: 3px solid #a080ff;
+    box-shadow: 0 0 15px 5px rgba(160, 128, 255, 0.7);
+    transform: perspective(700px) rotateY(-15deg) rotateX(3deg) scale(1.05);
+    animation-play-state: paused;
+  }
 
-.logo-img:hover {
-  border: 3px solid #a080ff;
-  box-shadow:
-    0 0 15px 5px rgba(160, 128, 255, 0.7);
-  transform: perspective(700px) rotateY(-15deg) rotateX(3deg) scale(1.05);
-}
   /* Responsive */
   @media (max-width: 900px) {
     body {
@@ -193,15 +209,20 @@
     }
     main {
       max-width: 100vw;
+      padding-right: 0;
     }
     .logo-img {
-      float: none;
+      position: relative;
+      top: auto;
+      right: auto;
       max-width: 90vw;
       max-height: 300px;
       margin: 30px auto 60px;
       display: block;
+      animation: none;
       transform: none !important;
       box-shadow: 0 0 20px #6e4fff44;
+      z-index: 1;
     }
   }
 </style>
@@ -321,8 +342,8 @@
       </tbody>
     </table>
   </section>
-  
-  <!-- Image here so it floats right -->
+
+  <!-- Image floats on the right and animates -->
   <img src="images/vantoware_logo.png" alt="VantoWare Logo" class="logo-img" />
 </main>
 
