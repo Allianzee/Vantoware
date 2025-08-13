@@ -3,7 +3,7 @@
 <head>
 <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
 <meta property="og:title" content="VantoWare External" />
-<meta property="og:description" content="VantoWare is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar." />
+<meta property="og:description" content="VantoWare External is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar." />
 <meta property="og:image" content="https://vantoware.vercel.app/favicon.png" />
 <meta property="og:url" content="https://vantoware.vercel.app" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -27,25 +27,65 @@
   main {
     flex: 1 1 auto;
     max-width: 50vw;
-    padding-right: 50vw; /* space so fixed image doesn't cover text */
+    padding-right: 50vw;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  header img {
+    height: 80px;
   }
   header h1 {
     font-size: 3.5rem;
     margin-bottom: 0.5rem;
     text-shadow: 0 0 15px #6e4fff;
   }
-  header p {
-    font-size: 1.3rem;
-    color: #c9baff;
-    max-width: 600px;
-    margin: 0 0 40px 0;
-    text-shadow: 0 0 10px #a080ff;
-  }
-  .btn-group {
+  nav {
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    margin-left: auto;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #a080ff;
+    transition: width 0.3s;
+  }
+  nav a:hover::after, nav a.active::after {
+    width: 100%;
+  }
+  section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+  section.active {
+    display: block;
+  }
+  section h2 {
+    font-size: 2.75rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #6e4fff;
+  }
+  section p {
+    color: #c9baff;
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto 25px 0;
   }
   .btn {
     background: #4b007f;
@@ -62,181 +102,20 @@
     display: inline-block;
     white-space: nowrap;
     text-decoration: none;
+    margin-top: 15px;
   }
   .btn:hover {
     background: #6e4fff;
     box-shadow: 0 0 40px #a080ff;
   }
-  section {
-    margin-top: 80px;
-  }
-  section h2 {
-    font-size: 2.75rem;
-    margin-bottom: 15px;
-    text-shadow: 0 0 15px #6e4fff;
-  }
-  section p {
-    color: #c9baff;
-    font-size: 1.15rem;
-    max-width: 600px;
-    margin: 0 auto 25px 0;
-  }
-  .features-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    gap: 30px;
-    margin-top: 40px;
-  }
-  .feature-item {
-    background: #3a0066;
-    border-radius: 20px;
-    padding: 25px 20px;
-    box-shadow: 0 0 25px #4b007f88;
-    transition: box-shadow 0.3s ease;
-    user-select: none;
-  }
-  .feature-item:hover {
-    box-shadow: 0 0 40px #6e4fffaa;
-  }
-  .feature-item h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #a080ff;
-    font-size: 1.5rem;
-  }
-  .feature-item p {
-    color: #d0c6ffcc;
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-  .community-stats {
-    display: flex;
-    gap: 50px;
-    margin-top: 60px;
-    user-select: none;
-  }
-  .stat {
-    text-align: center;
-  }
-  .stat h3 {
-    font-size: 2.5rem;
-    margin: 0;
-    color: #a080ff;
-    text-shadow: 0 0 8px #6e4fff;
-  }
-  .stat p {
-    font-size: 1rem;
-    color: #c9baff;
-    margin: 6px 0 0 0;
-  }
-  .comparison-section {
-    margin-top: 80px;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    background: #3a0066;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 0 25px #4b007f88;
-    user-select: none;
-  }
-  th, td {
-    padding: 15px 20px;
-    text-align: center;
-    color: #d0c6ffcc;
-    border-bottom: 1px solid #5a0088;
-    font-size: 1rem;
-  }
-  th {
-    background: #4b007f;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #a080ff;
-    text-shadow: 0 0 8px #6e4fff;
-  }
-  td:first-child {
-    text-align: left;
-    font-weight: 600;
-    color: #c9baff;
-  }
-  td:nth-child(2), td:nth-child(3) {
-    font-size: 1.2rem;
-  }
-
-  /* Animations */
-  @keyframes floatIdle {
-    0%, 100% {
-      transform: perspective(700px) rotateY(-20deg) rotateX(5deg) translateY(0);
-    }
-    50% {
-      transform: perspective(700px) rotateY(-20deg) rotateX(5deg) translateY(-15px);
-    }
-  }
   @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {opacity:0;} to {opacity:1;}
   }
-
-  /* Image styling */
-  .logo-img {
-    position: fixed;
-    top: 80px;
-    right: 40px;
-    max-width: 40vw;
-    max-height: 70vh;
-    object-fit: contain;
-    border-radius: 40px;
-    cursor: pointer;
-    user-select: none;
-    border: 3px solid transparent;
-    box-shadow: 0 0 6px 2px rgba(160, 128, 255, 0.25);
-    transform-origin: center center;
-    transform-style: preserve-3d;
-    animation: floatIdle 4s ease-in-out infinite;
-    z-index: 9999;
-    transition:
-      border 0.3s ease,
-      box-shadow 0.3s ease,
-      transform 0.3s ease;
-  }
-  .logo-img:hover {
-    border: 3px solid #a080ff;
-    box-shadow: 0 0 15px 5px rgba(160, 128, 255, 0.7);
-    transform: perspective(700px) rotateY(-15deg) rotateX(3deg) scale(1.05);
-    animation-play-state: paused;
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    body {
-      flex-direction: column;
-      padding: 20px;
-    }
-    main {
-      max-width: 100vw;
-      padding-right: 0;
-    }
-    .logo-img {
-      position: relative;
-      top: auto;
-      right: auto;
-      max-width: 90vw;
-      max-height: 300px;
-      margin: 30px auto 60px;
-      display: block;
-      animation: none;
-      transform: none !important;
-      box-shadow: 0 0 20px #6e4fff44;
-      z-index: 1;
-    }
-  }
-
   /* Popup Modal */
   #paymentModal {
-    display: none; /* hide by default */
+    display: none;
     position: fixed;
-    top: 0; left: 0;
+    top: 0; left:0;
     width: 100vw; height: 100vh;
     background: rgba(0,0,0,0.75);
     backdrop-filter: blur(4px);
@@ -255,180 +134,81 @@
     text-align: center;
     position: relative;
   }
-  #modalContent p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  #modalContent a {
-    color: #a080ff;
-    text-decoration: underline;
-  }
+  #modalContent p {margin: 15px 0;}
+  #modalContent a {color:#a080ff;text-decoration:underline;}
   #closeModalBtn {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 10px; right: 15px;
     background: transparent;
     border: none;
     color: #ccc;
     font-size: 1.5rem;
     cursor: pointer;
-    user-select: none;
   }
-  #closeModalBtn:hover {
-    color: white;
-  }
+  #closeModalBtn:hover { color: #fff; }
 </style>
 </head>
 <body>
 
 <main>
-  <header>
-  <img src="images/Vanto.png" alt="Vanto Logo" style="max-height: 120px; margin-bottom: 10px;" />
+<header>
+  <img src="images/Vanto.png" alt="VantoWare Logo" />
   <h1>VantoWare External</h1>
-  <p>VantoWare is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar.</p>
-  <div class="btn-group">
-    <button id="downloadBtn" class="btn">Download Now</button>
-    <a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener noreferrer" class="btn">Join Discord</a>
-  </div>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#tos">TOS</a>
+  </nav>
 </header>
 
-  <section id="interface">
-    <h2>VantoWare Interface</h2>
-    <p>Designed for ease of use, VantoWare offers an intuitive, lightweight interface that lets you access powerful cheats without hassle.</p>
-  </section>
+<section id="home" class="active">
+  <h2>Welcome to VantoWare External</h2>
+  <p>VantoWare External is a powerful Roblox external cheat that enhances your gameplay with advanced features while keeping you safe and under the radar.</p>
+  <button id="downloadBtn" class="btn">Download</button>
+</section>
 
-  <section id="why-choose-us">
-    <h2>Why Choose Us</h2>
-    <div class="features-list">
-      <div class="feature-item">
-        <h3>Unmatched Features</h3>
-        <p>VantoWare provides a comprehensive suite of cheats and tools designed to enhance your Roblox experience like never before.</p>
-      </div>
-      <div class="feature-item">
-        <h3>Maximum Performance</h3>
-        <p>Optimized for speed and stability, VantoWare runs smoothly without lag or crashes, letting you game uninterrupted.</p>
-      </div>
-      <div class="feature-item">
-        <h3>Advanced Security</h3>
-        <p>Our proprietary anti-detection system keeps you safe from bans while delivering consistent performance.</p>
-      </div>
-      <div class="feature-item">
-        <h3>99% Undetected</h3>
-        <p>Our custom-built modules ensure a 99% undetected rate across all supported Roblox scripts.</p>
-      </div>
-      <div class="feature-item">
-        <h3>24/7 Support</h3>
-        <p>Our dedicated support team is always ready to help with any questions or issues.</p>
-      </div>
-    </div>
-  </section>
+<section id="tos">
+  <h2>Terms of Service</h2>
+  <p><strong>Ban Responsibility:</strong> Any bans or similar consequences from using VantoWare External are your responsibility.</p>
+  <p><strong>Discord Server Conduct:</strong> You may be banned from the VantoWare Discord server at moderator discretion.</p>
+  <p><strong>Personal Accountability:</strong> You are solely responsible for your actions while using VantoWare External.</p>
+  <p><strong>Source Verification:</strong> Downloading VantoWare External from unverified sources is at your own risk.</p>
+  <p><strong>Content Accuracy:</strong> Minor errors may exist; they do not affect validity of these terms.</p>
+  <p><strong>Support for Minors:</strong> All users, including minors, are supported within legal compliance.</p>
+</section>
 
-  <section id="community">
-    <h2>Our Community</h2>
-    <p>Trusted by a growing number of users worldwide who rely on VantoWare for their Roblox external cheat needs.</p>
-    <div class="community-stats">
-      <div class="stat">
-        <h3>125+</h3>
-        <p>Discord Members</p>
-      </div>
-      <div class="stat">
-        <h3>v0.1.1</h3>
-        <p>Current Version</p>
-      </div>
-      <div class="stat">
-        <h3>99%</h3>
-        <p>Undetected Rate</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="features-comparison" class="comparison-section">
-    <h2>Features Comparison</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Live</th>
-          <th>Soon</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>External Injection</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Script Support</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Undetected Modules</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Instant Injection</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Settings UI</td>
-          <td>✔️</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Advanced TP Handler</td>
-          <td></td>
-          <td>✔️</td>
-        </tr>
-        <tr>
-          <td>Crash Prevention</td>
-          <td></td>
-          <td>✔️</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- Image floats on the right and animates -->
-  <img src="images/vantoware_logo.png" alt="VantoWare Logo" class="logo-img" />
 </main>
 
-<!-- Popup Modal -->
+<!-- Payment Modal -->
 <div id="paymentModal">
   <div id="modalContent">
-    <button id="closeModalBtn" aria-label="Close popup">&times;</button>
+    <button id="closeModalBtn">&times;</button>
     <h2>Payment Info</h2>
-
     <p>💵 <strong>Pricing</strong></p>
-
-    <p>⭐ $1 day<br>
-    [ 1 Day Access to VantoWare ]</p>
-
-    <p>⭐ $3 a week<br>
-    [ 1 Week Access to VantoWare ]</p>
-
-    <p>⭐ $6 lifetime<br>
-    [ LifeTime Access to VantoWare ]</p>
-
-    <p style="margin-top: 25px;">
-      <strong>$enzoontop11</strong> is the seller's Cash App username.<br />
-      Make a ticket in the server.
-    </p>
-
-    <p style="font-size: 0.8rem; color: #aaa; margin-top: 10px;">
-      By Purchasing "VantoWare", you agree to our
-      <a href="/terms-of-service" target="_blank" style="color:#a080ff; text-decoration:underline;">
-        Terms of Service
-      </a>.
-    </p>
+    <p>⭐ $1 day<br>[1 Day Access]</p>
+    <p>⭐ $3 a week<br>[1 Week Access]</p>
+    <p>⭐ $6 lifetime<br>[Lifetime Access]</p>
+    <p><strong>$enzoontop11</strong> is the seller's CashApp username.<br>Make a ticket in the server.</p>
+    <p style="font-size:0.8rem;color:#aaa;">By purchasing "VantoWare External", you agree to our <a href="#tos">Terms of Service</a>.</p>
   </div>
 </div>
 
-
 <script>
+  // Tab navigation
+  const tabs = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('main > section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+      tabs.forEach(t => t.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      const target = document.querySelector(tab.getAttribute('href'));
+      if(target) target.classList.add('active');
+    });
+  });
+
+  // Payment modal
   const downloadBtn = document.getElementById('downloadBtn');
   const paymentModal = document.getElementById('paymentModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
@@ -441,12 +221,10 @@
     paymentModal.style.display = 'none';
   });
 
-  paymentModal.addEventListener('click', (e) => {
-    if (e.target === paymentModal) {
-      paymentModal.style.display = 'none';
-    }
+  paymentModal.addEventListener('click', e => {
+    if(e.target === paymentModal) paymentModal.style.display = 'none';
   });
 </script>
 
 </body>
-</html>
+</html> 
