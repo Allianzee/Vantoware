@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      background: linear-gradient(135deg, #5a00ff, #a366ff);
+      background: linear-gradient(135deg, #2a0055, #4b007f); /* dark purples */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
       height: 100vh;
@@ -21,34 +21,36 @@
       font-size: 3rem;
       margin: 40px 0 10px 0;
       max-width: 50%;
-      text-shadow: 0 0 10px #d3b3ff;
+      text-shadow: 0 0 15px #6e4fff;
     }
 
     p {
       font-size: 1.2rem;
       margin-bottom: 40px;
       max-width: 50%;
-      text-shadow: 0 0 6px #b399ff;
+      text-shadow: 0 0 10px #a080ff;
     }
 
+    /* Buttons container */
     .left-buttons {
       position: fixed;
-      bottom: 100px; /* moved up */
+      bottom: 50%; /* up to 50% from bottom */
       left: 40px;
+      transform: translateY(50%); /* push it up exactly half its height */
       display: flex;
       gap: 20px;
       z-index: 20;
     }
 
     .btn {
-      background: #7f56ff;
+      background: #4b007f;
       border: none;
       color: white;
       padding: 15px 40px;
       font-size: 1.25rem;
       border-radius: 9999px;
       cursor: pointer;
-      box-shadow: 0 0 15px #a366ff;
+      box-shadow: 0 0 20px #6e4fff;
       transition: background 0.3s ease;
       text-decoration: none;
       user-select: none;
@@ -56,15 +58,19 @@
     }
 
     .btn:hover {
-      background: #b399ff;
-      box-shadow: 0 0 20px #d3b3ff;
+      background: #6e4fff;
+      box-shadow: 0 0 30px #a080ff;
     }
 
+    /* Image styling */
     .logo-img {
       position: fixed;
-      right: 0;
-      bottom: 0;
-      height: 65vh; /* smaller */
+      bottom: 50%; /* align vertically with buttons */
+      right: 20%; /* shifted left 20% from right */
+      transform-origin: center center;
+      transform-style: preserve-3d;
+      transform: perspective(800px) rotateY(-25deg) rotateX(5deg) translateY(50%);
+      height: 65vh;
       width: auto;
       max-width: 90vw;
       object-fit: contain;
@@ -75,23 +81,19 @@
         box-shadow 0.3s ease,
         transform 0.3s ease,
         filter 0.3s ease;
-      /* Facing left: negative rotateY */
-      transform-origin: center center;
-      transform-style: preserve-3d;
-      transform: perspective(800px) rotateY(-25deg) rotateX(5deg);
       box-shadow:
-        0 0 30px 8px #b399ff,
-        0 0 60px 20px #d3b3ff;
-      filter: drop-shadow(0 0 8px #b399ff);
+        0 0 30px 8px #6e4fff,
+        0 0 60px 20px #a080ff;
+      filter: drop-shadow(0 0 8px #6e4fff);
       z-index: 10;
     }
 
     .logo-img:hover {
-      transform: perspective(800px) rotateY(-15deg) rotateX(3deg) scale(1.05);
+      transform: perspective(800px) rotateY(-15deg) rotateX(3deg) translateY(50%) scale(1.05);
       box-shadow:
-        0 0 40px 12px #d3b3ff,
-        0 0 80px 30px #e0c2ff;
-      filter: drop-shadow(0 0 16px #d3b3ff);
+        0 0 40px 12px #a080ff,
+        0 0 80px 30px #c9baff;
+      filter: drop-shadow(0 0 16px #a080ff);
       z-index: 15;
     }
 
@@ -103,6 +105,7 @@
       opacity: 0.7;
       max-width: 50%;
       user-select: none;
+      text-shadow: 0 0 6px #4b007f;
     }
   </style>
 </head>
