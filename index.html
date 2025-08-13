@@ -11,33 +11,38 @@
       background: linear-gradient(135deg, #5a00ff, #a366ff);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
-      text-align: center;
-      padding: 20px;
-      gap: 40px;
+      padding-left: 40px;
+      padding-right: 40px;
+      position: relative;
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
       text-shadow: 0 0 10px #d3b3ff;
+      max-width: 50%;
     }
 
     p {
       font-size: 1.2rem;
       margin-bottom: 30px;
       text-shadow: 0 0 6px #b399ff;
+      max-width: 50%;
     }
 
-    /* Container for buttons + image aligned horizontally */
-    .action-row {
+    /* Container for buttons on the left side */
+    .left-buttons {
+      position: fixed;
+      bottom: 40px;
+      left: 40px;
       display: flex;
-      align-items: center;
-      gap: 30px;
+      gap: 20px;
+      z-index: 20;
     }
 
     .btn {
@@ -60,39 +65,49 @@
       box-shadow: 0 0 20px #d3b3ff;
     }
 
-    /* Image styling */
+    /* Image on the right side, smaller */
     .logo-img {
-      width: 120px;
-      height: 120px;
+      position: fixed;
+      right: 40px;
+      bottom: 40px;
+      width: 140px;
+      height: 140px;
       object-fit: contain;
       border-radius: 20px;
+      cursor: pointer;
+      user-select: none;
       transition:
         box-shadow 0.3s ease,
         transform 0.3s ease,
         filter 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    /* Hover effect: purple outline, glow, perspective tilt */
-    .logo-img:hover {
+      /* Perspective facing left */
+      transform-origin: center center;
+      transform-style: preserve-3d;
+      transform: perspective(600px) rotateY(15deg) rotateX(5deg);
       box-shadow:
         0 0 12px 4px #b399ff,
         0 0 30px 10px #d3b3ff;
       filter: drop-shadow(0 0 6px #b399ff);
-      transform:
-        perspective(600px)
-        rotateY(15deg)
-        rotateX(5deg)
-        scale(1.05);
       z-index: 10;
+    }
+
+    /* On hover, glow and tilt more */
+    .logo-img:hover {
+      transform: perspective(600px) rotateY(5deg) rotateX(2deg) scale(1.1);
+      box-shadow:
+        0 0 18px 6px #d3b3ff,
+        0 0 40px 15px #e0c2ff;
+      filter: drop-shadow(0 0 12px #d3b3ff);
+      z-index: 15;
     }
 
     footer {
       position: absolute;
       bottom: 10px;
+      left: 40px;
       font-size: 0.8rem;
       opacity: 0.7;
+      max-width: 50%;
     }
   </style>
 </head>
@@ -100,22 +115,20 @@
   <h1>VantoWare</h1>
   <p>Your go-to external utility for Roblox</p>
 
-  <div class="action-row">
-    <a href="/downloads/VantoWareExternal.exe" download class="btn" style="order: 1;">
+  <div class="left-buttons">
+    <a href="/downloads/VantoWareExternal.exe" download class="btn">
       Download
     </a>
-
-    <img
-      src="images/vantoware_logo.png"
-      alt="VantoWare Logo"
-      class="logo-img"
-      style="order: 2;"
-    />
-
-    <a href="https://discord.gg/yourdiscordinvite" target="_blank" class="btn" rel="noopener noreferrer" style="order: 3;">
+    <a href="https://discord.gg/yourdiscordinvite" target="_blank" class="btn" rel="noopener noreferrer">
       Join Discord
     </a>
   </div>
+
+  <img
+    src="images/vantoware_logo.png"
+    alt="VantoWare Logo"
+    class="logo-img"
+  />
 
   <footer>© 2025 VantoWare. All rights reserved.</footer>
 </body>
