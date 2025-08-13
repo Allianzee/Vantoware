@@ -79,15 +79,17 @@
   user-select: none;
   transition:
     border 0.3s ease,
+    box-shadow 0.3s ease,
     transform 0.3s ease;
-  border: 4px solid transparent; /* no border normally */
-  box-shadow: none; /* no glow */
+  border: 4px solid transparent;
+  box-shadow: 0 0 6px 2px rgba(160, 128, 255, 0.4); /* subtle glow */
   z-index: 10;
 }
 
 .logo-img:hover {
-  border: 4px solid #a080ff; /* purple outline on hover */
-  box-shadow: none;
+  border: 4px solid #a080ff; /* purple outline */
+  box-shadow:
+    0 0 10px 4px rgba(160, 128, 255, 0.6); /* subtle stronger glow */
   transform: perspective(800px) rotateY(-15deg) rotateX(3deg) translateY(50%) scale(1.05);
   z-index: 15;
 }
