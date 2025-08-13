@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VantoWare | External Utility</title>
   <style>
-    /* Purple vibes */
     body {
       margin: 0;
       background: linear-gradient(135deg, #5a00ff, #a366ff);
@@ -13,29 +12,25 @@
       color: white;
       height: 100vh;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      position: relative;
       padding-left: 40px;
       padding-right: 40px;
-      position: relative;
     }
 
     h1 {
       font-size: 3rem;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px #d3b3ff;
+      margin: 40px 0 10px 0;
       max-width: 50%;
+      text-shadow: 0 0 10px #d3b3ff;
     }
 
     p {
       font-size: 1.2rem;
-      margin-bottom: 30px;
-      text-shadow: 0 0 6px #b399ff;
+      margin-bottom: 40px;
       max-width: 50%;
+      text-shadow: 0 0 6px #b399ff;
     }
 
-    /* Container for buttons on the left side */
     .left-buttons {
       position: fixed;
       bottom: 40px;
@@ -65,49 +60,49 @@
       box-shadow: 0 0 20px #d3b3ff;
     }
 
-    /* Image on the right side, smaller */
     .logo-img {
       position: fixed;
-      right: 40px;
-      bottom: 40px;
-      width: 140px;
-      height: 140px;
+      right: 0;
+      bottom: 0;
+      height: 90vh;
+      width: auto;
+      max-width: 90vw;
       object-fit: contain;
-      border-radius: 20px;
+      border-radius: 40px;
       cursor: pointer;
       user-select: none;
       transition:
         box-shadow 0.3s ease,
         transform 0.3s ease,
         filter 0.3s ease;
-      /* Perspective facing left */
+      /* Facing left: negative rotateY */
       transform-origin: center center;
       transform-style: preserve-3d;
-      transform: perspective(600px) rotateY(15deg) rotateX(5deg);
+      transform: perspective(800px) rotateY(-25deg) rotateX(5deg);
       box-shadow:
-        0 0 12px 4px #b399ff,
-        0 0 30px 10px #d3b3ff;
-      filter: drop-shadow(0 0 6px #b399ff);
+        0 0 30px 8px #b399ff,
+        0 0 60px 20px #d3b3ff;
+      filter: drop-shadow(0 0 8px #b399ff);
       z-index: 10;
     }
 
-    /* On hover, glow and tilt more */
     .logo-img:hover {
-      transform: perspective(600px) rotateY(5deg) rotateX(2deg) scale(1.1);
+      transform: perspective(800px) rotateY(-15deg) rotateX(3deg) scale(1.05);
       box-shadow:
-        0 0 18px 6px #d3b3ff,
-        0 0 40px 15px #e0c2ff;
-      filter: drop-shadow(0 0 12px #d3b3ff);
+        0 0 40px 12px #d3b3ff,
+        0 0 80px 30px #e0c2ff;
+      filter: drop-shadow(0 0 16px #d3b3ff);
       z-index: 15;
     }
 
     footer {
-      position: absolute;
+      position: fixed;
       bottom: 10px;
       left: 40px;
       font-size: 0.8rem;
       opacity: 0.7;
       max-width: 50%;
+      user-select: none;
     }
   </style>
 </head>
