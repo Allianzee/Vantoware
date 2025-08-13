@@ -48,7 +48,6 @@
     border-radius: 9999px;
     box-shadow: 0 0 25px #6e4fff;
     cursor: pointer;
-    transition: background 0.3s ease;
     user-select: none;
     color: white;
     border: none;
@@ -86,7 +85,6 @@
     border-radius: 20px;
     padding: 25px 20px;
     box-shadow: 0 0 25px #4b007f88;
-    transition: box-shadow 0.3s ease;
     user-select: none;
   }
   .feature-item:hover {
@@ -225,6 +223,53 @@
       z-index: 1;
     }
   }
+
+  /* Modal styling */
+  #paymentModal {
+    display: flex;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+  }
+  #modalContent {
+    background: #2a0055;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    color: #fff;
+    box-shadow: 0 0 25px #6e4fff;
+    text-align: center;
+  }
+  #modalContent p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  #modalContent a {
+    color: #a080ff;
+    text-decoration: underline;
+  }
+  #modalContent button {
+    margin-top: 20px;
+    width: 100%;
+    background: #6e4fff;
+    padding: 12px;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #fff;
+    box-shadow: 0 0 15px #a080ff;
+    user-select: none;
+  }
+  #modalContent button:hover {
+    background: #a080ff;
+  }
 </style>
 </head>
 <body>
@@ -234,7 +279,7 @@
     <h1>VantoWare External</h1>
     <p>VantoWare is your powerful Roblox external cheat that enhances your gameplay with advanced features, keeping you safe and under the radar.</p>
     <div class="btn-group">
-      <a href="/downloads/VantoWareExternal.exe" download class="btn">Download Now</a>
+      <a href="/downloads/VantoWareExternal.exe" download class="btn" id="downloadBtn">Download Now</a>
       <a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener noreferrer" class="btn">Join Discord</a>
     </div>
   </header>
@@ -347,93 +392,27 @@
   <img src="images/vantoware_logo.png" alt="VantoWare Logo" class="logo-img" />
 </main>
 
-  <!-- Popup Modal -->
-<div id="paymentModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);z-index:10000;justify-content:center;align-items:center;">
-  <div style="background:#2a0055;padding:30px;border-radius:15px;max-width:400px;width:90%;color:#fff;box-shadow:0 0 25px #6e4fff;">
-    <h2 style="margin-top:0;text-align:center;">Payment Info</h2>
+<!-- Popup Modal always visible -->
+<div id="paymentModal">
+  <div id="modalContent">
+    <h2>Payment Info</h2>
+    <p>Cash App User: <strong>$YourCashAppUser</strong></p>
+    <p>Amount Needed: <strong>$20.00</strong></p>
 
-    <p style="font-size:1.2rem; margin-bottom:8px;">Cash App User: <strong id="cashAppUserLabel">$YourCashAppUser</strong></p>
-    <p style="font-size:1.2rem; margin-bottom:20px;">Amount Needed: <strong id="amountNeededLabel">$20.00</strong></p>
+    <p style="margin-bottom: 20px;">
+      DM <strong>xdplayzyt7889#0000</strong> on Discord to confirm your payment.
+    </p>
 
-    <label style="display:block;margin-bottom:8px;">Your Discord Username:</label>
-    <input id="discordUser" type="text" placeholder="Discord#1234" style="width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:20px;font-size:1rem;" />
+    <p style="font-size: 0.8rem; color: #aaa; margin-top: 10px;">
+      By clicking "Download Now", you agree to our
+      <a href="/terms-of-service" target="_blank" style="color:#a080ff; text-decoration:underline;">
+        Terms of Service
+      </a>.
+    </p>
 
-    <button id="sendPaymentBtn" style="width:100%;background:#6e4fff;padding:12px;border:none;border-radius:9999px;font-size:1.1rem;cursor:pointer;color:#fff;box-shadow:0 0 15px #a080ff;">Send</button>
-    <button id="closeModalBtn" style="margin-top:10px;width:100%;background:#4b007f;padding:12px;border:none;border-radius:9999px;font-size:1.1rem;cursor:pointer;color:#ccc;box-shadow:none;">Cancel</button>
-
-    <p id="modalMsg" style="margin-top:12px;text-align:center;font-size:0.9rem;"></p>
+    <a href="/downloads/VantoWareExternal.exe" download class="btn">Download Now</a>
   </div>
 </div>
 
-<script>
-  const downloadBtn = document.querySelector('a.btn[href$="VantoWareExternal.exe"]');
-  const modal = document.getElementById('paymentModal');
-  const closeModalBtn = document.getElementById('closeModalBtn');
-  const sendBtn = document.getElementById('sendPaymentBtn');
-  const modalMsg = document.getElementById('modalMsg');
-
-  const cashAppUserLabel = document.getElementById('cashAppUserLabel');
-  const amountNeededLabel = document.getElementById('amountNeededLabel');
-
-  downloadBtn.addEventListener('click', function(e) {
-    e.preventDefault(); // stop actual download for now
-    modal.style.display = 'flex';
-  });
-
-  closeModalBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    modalMsg.textContent = '';
-    sendBtn.disabled = false;
-    sendBtn.textContent = 'Send';
-  });
-
-  sendBtn.addEventListener('click', async () => {
-    modalMsg.textContent = '';
-    const cashAppUser = cashAppUserLabel.textContent.trim();
-    const amountNeeded = amountNeededLabel.textContent.trim();
-    const discordUser = document.getElementById('discordUser').value.trim();
-
-    if (!discordUser) {
-      modalMsg.style.color = 'red';
-      modalMsg.textContent = 'Please enter your Discord username.';
-      return;
-    }
-
-    sendBtn.disabled = true;
-    sendBtn.textContent = 'Sending...';
-
-    try {
-      const res = await fetch('/api/sendEmail', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cashAppUser, amountNeeded, discordUser })
-      });
-
-      if (res.ok) {
-        modalMsg.style.color = 'lightgreen';
-        modalMsg.textContent = 'Email sent! Starting download...';
-        setTimeout(() => {
-          modal.style.display = 'none';
-          sendBtn.disabled = false;
-          sendBtn.textContent = 'Send';
-          downloadBtn.removeEventListener('click', preventDefaultListener);
-          downloadBtn.click(); // trigger actual download now
-        }, 1500);
-      } else {
-        throw new Error('Failed to send email');
-      }
-    } catch (err) {
-      modalMsg.style.color = 'red';
-      modalMsg.textContent = 'Error sending email, try again.';
-      sendBtn.disabled = false;
-      sendBtn.textContent = 'Send';
-    }
-  });
-
-  function preventDefaultListener(e) {
-    e.preventDefault();
-  }
-  downloadBtn.addEventListener('click', preventDefaultListener);
-</script>
 </body>
 </html>
